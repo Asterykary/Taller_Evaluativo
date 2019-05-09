@@ -1,0 +1,13 @@
+<h2>Servicio Villanos</h2>
+<h3>{{compania}}</h3>
+<h4>Su sitio es: {{sitio}}</h4>
+<div class="card-columns">
+    <div *ngFor="let villanos of listavillanos" class="card">
+        <img [src]="villanos.imagen" class="card-img-top" alt="..">
+        <div class="card-body">
+            <h3 class="card-tittle">{{villanos.nombre}}</h3>
+            <h5 class="card-tittle">{{villanos.descripcion}}</h5>
+            <p class="card-text">{{villanos.poder}}</p>
+        </div>
+    </div>
+</div>

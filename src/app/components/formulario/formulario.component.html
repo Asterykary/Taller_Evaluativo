@@ -1,0 +1,78 @@
+<h4>Formulario</h4>
+<hr>
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()" novalidate="novalidate">
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Nombre</label>
+      <div class="col-8">
+        <input class="form-control" [ngClass]="{'is-invalid': !forma.get('nombre').valid}" type="text"
+          placeholder="Nombre" formControlName="nombre">
+        <div *ngIf="forma.get('nombre').errors?.required" class="invalid-feedback">
+          El nombre es necesario</div>
+
+        <div *ngIf="forma.get('nombre').errors?.minlength" class="invalid-feedback">
+          Por lo menos 3 carácteres</div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Apellido</label>
+      <div class="col-8">
+        <input class="form-control" [ngClass]="{'is-invalid': !forma.get('apellido').valid}" 
+        type="text" placeholder="Apellido" formControlName="apellido">
+        <div *ngIf="forma.get('apellido').errors?.required" class="invalid-feedback">
+          El apellido es necesario</div>
+
+        <div *ngIf="forma.get('apellido').errors?.minlength" class="invalid-feedback">
+          Por lo menos 3 carácteres</div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Dirección</label>
+      <div class="col-8">
+
+        <input class="form-control" [ngClass]="{'is-invalid': !forma.get('direccion').valid}" 
+        type="text" placeholder="direccion" formControlName="direccion">
+        <div *ngIf="forma.get('direccion').errors?.required" class="invalid-feedback">
+            La dirección es necesaria</div>
+  
+          <div *ngIf="forma.get('direccion').errors?.minlength" class="invalid-feedback">
+            Por lo menos 10 carácteres</div>
+            <div *ngIf="forma.get('direccion').errors?.maxlength" class="invalid-feedback">
+            Máximo 50 carácteres</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Correo</label>
+    <div class="col-md-8">
+
+      <input class="form-control" [ngClass]="{'is-invalid': !forma.get('correo').valid}"
+       type="email" placeholder="Correo electrónico" formControlName="correo">
+       <div *ngIf="forma.get('correo').errors?.required" class="invalid-feedback">
+          El correo es necesario</div>
+
+        <div *ngIf="forma.get('correo').errors?.pattern" class="invalid-feedback">
+          El correo debe tener un formato valido</div>
+    </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">&nbsp;</label>
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-outline-primary">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+
+Formulario {{forma.valid ? 'Valido' : 'Invalido' }}
